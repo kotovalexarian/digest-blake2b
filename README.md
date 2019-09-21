@@ -1,4 +1,5 @@
-# BLAKE2b for Ruby
+Digest::Blake2b
+===============
 
 BLAKE2 is a cryptographic hash function faster than MD5, SHA-1, SHA-2, and SHA-3, yet is at least as secure as the latest standard SHA-3. BLAKE2 has been adopted by many projects due to its high speed, security, and simplicity.
 
@@ -111,4 +112,4 @@ Blake2b is based heavily on [Blake2](https://github.com/franckverrot/blake2) by 
 
 Blake2b is copyright 2018, Mauricio Gomes.
 
-The original work (Blake2) and the modified work (Blake2b) are licensed GPL v3.0. See LICENSE.txt for details.
+The original work (Blake2) and the modified work (Blake2b) are licensed GPL v3.0. See LICENSE for details.
