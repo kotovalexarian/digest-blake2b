@@ -535,7 +535,7 @@ class Blake2bVectorTest < MiniTest::Test
         j += 1
       end
 
-      res = Blake2b.new(64, Blake2b::Key.none).digest(bytes_to_string(buf), :to_hex)
+      res = Digest::Blake2b.new(64, Digest::Blake2b::Key.none).digest(bytes_to_string(buf), :to_hex)
       assert_kind_of String, res
       assert_equal @golden[i], res
     end
@@ -553,7 +553,7 @@ class Blake2bVectorTest < MiniTest::Test
         j += 1
       end
 
-      res = Blake2b.new(64, Blake2b::Key.from_string(bytes_to_string(key))).digest(bytes_to_string(buf), :to_hex)
+      res = Digest::Blake2b.new(64, Digest::Blake2b::Key.from_string(bytes_to_string(key))).digest(bytes_to_string(buf), :to_hex)
       assert_kind_of String, res
       assert_equal @golden_keyed[i], res
     end
@@ -572,7 +572,7 @@ class Blake2bVectorTest < MiniTest::Test
         j += 1
       end
 
-      res = Blake2b.new(64, Blake2b::Key.from_hex(key_hex)).digest(bytes_to_string(buf), :to_hex)
+      res = Digest::Blake2b.new(64, Digest::Blake2b::Key.from_hex(key_hex)).digest(bytes_to_string(buf), :to_hex)
       assert_kind_of String, res
       assert_equal @golden_keyed[i], res
     end

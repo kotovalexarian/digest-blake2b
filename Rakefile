@@ -2,9 +2,9 @@ require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'rake/extensiontask'
 
-spec = Gem::Specification.load('blake2b.gemspec')
+spec = Gem::Specification.load('digest-blake2b.gemspec')
 
-Rake::ExtensionTask.new('blake2b_ext', spec) do |ext|
+Rake::ExtensionTask.new('digest/blake2b_ext', spec) do |ext|
   ext.source_pattern = '*.{c,h}'
 end
 
@@ -22,7 +22,7 @@ task full: %w(clean compile test)
 
 def gemspec
   @gemspec ||= begin
-                 file = File.expand_path('../blake2b.gemspec', __FILE__)
+                 file = File.expand_path('digest-blake2b.gemspec', __dir__)
                  eval(File.read(file), binding, file)
                end
 end
@@ -35,7 +35,7 @@ end
 desc "Build the gem"
 task :gem => [:gemspec, :build] do
   mkdir_p "pkg"
-  sh "gem build blake2b.gemspec"
+  sh "gem build digest-blake2b.gemspec"
   mv "#{gemspec.full_name}.gem", "pkg"
 
   require 'digest/sha2'

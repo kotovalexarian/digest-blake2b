@@ -5,7 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 /lib/*.bundle
-/lib/blake2b_ext.so
+/lib/digest/blake2b_ext.so
 
 *.o
 *.gem
