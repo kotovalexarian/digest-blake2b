@@ -14,23 +14,23 @@ The C code for this gem is taken from the [official reference C implementation](
 ## Install
 
 ```
-gem install blake2b
+gem install digest-blake2b
 ```
 
 ## Usage
 
 ``` ruby
-require 'blake2b'
+require 'digest/blake2b'
 
 # The UTF-8 String (Required) that you want to digest.
 input   = 'abc'
 
 # The main application of keyed BLAKE2 is as a message authentication code (MAC)
-# By default `Blake2b::Key.none` is used.
-key = Blake2b::Key.none
-# key = Blake2b::Key.from_string("foo bar baz")
-# key = Blake2b::Key.from_hex('DEADBEAF')
-# key = Blake2b::Key.from_bytes([222, 173, 190, 175])
+# By default `Digest::Blake2b::Key.none` is used.
+key = Digest::Blake2b::Key.none
+# key = Digest::Blake2b::Key.from_string("foo bar baz")
+# key = Digest::Blake2b::Key.from_hex('DEADBEAF')
+# key = Digest::Blake2b::Key.from_bytes([222, 173, 190, 175])
 
 # The output length in Bytes of the Hash, Max and Default is 32.
 out_len = 32
@@ -38,32 +38,32 @@ out_len = 32
 # HEX OUTPUT
 ############
 
-Blake2b.hex(input)
+Digest::Blake2b.hex(input)
 => "508c5e8c327c14e2e1a72ba34eeb452f37458b209ed63a294d999b4c86675982"
 
-Blake2b.hex(input, key)
+Digest::Blake2b.hex(input, key)
 => "508c5e8c327c14e2e1a72ba34eeb452f37458b209ed63a294d999b4c86675982"
 
-Blake2b.hex(input, key, out_len)
+Digest::Blake2b.hex(input, key, out_len)
 => "508c5e8c327c14e2e1a72ba34eeb452f37458b209ed63a294d999b4c86675982"
 
 # BYTES OUTPUT
 ##############
 
-Blake2b.bytes(input)
+Digest::Blake2b.bytes(input)
 => [80, 140, 94, ...]
 
-Blake2b.bytes(input, key)
+Digest::Blake2b.bytes(input, key)
 => [80, 140, 94, ...]
 
-Blake2b.bytes(input, key, out_len)
+Digest::Blake2b.bytes(input, key, out_len)
 => [80, 140, 94, ...]
 
 ```
 
 ## Performance
 
-`Blake2b` really shines on larger inputs. Here are some benchmarks on various input sizes. You can find the performance suite used for these benchmarks at `performance/performance_suite.rb`. All tests were run on an iMac 27" Late 2014, 4GHz Core i7 CPU (4790K) w/ SSE4.1 + SSE4.2, 32GB DDR3 RAM.
+`Digest::Blake2b` really shines on larger inputs. Here are some benchmarks on various input sizes. You can find the performance suite used for these benchmarks at `performance/performance_suite.rb`. All tests were run on an iMac 27" Late 2014, 4GHz Core i7 CPU (4790K) w/ SSE4.1 + SSE4.2, 32GB DDR3 RAM.
 
 ### 1KB (1M digests)
 
@@ -108,8 +108,8 @@ Hopefully this gem will not be required once Ruby [issue #12802](https://bugs.ru
 
 ## License
 
-Blake2b is based heavily on [Blake2](https://github.com/franckverrot/blake2) by Franck Verrot, Copyright 2014.
+Digest::Blake2b is based heavily on [Blake2](https://github.com/franckverrot/blake2) by Franck Verrot, Copyright 2014.
 
-Blake2b is copyright 2018, Mauricio Gomes.
+Digest::Blake2b is copyright 2018, Mauricio Gomes.
 
-The original work (Blake2) and the modified work (Blake2b) are licensed GPL v3.0. See LICENSE for details.
+The original work (Blake2) and the modified work (Digest::Blake2b) are licensed GPL v3.0. See LICENSE for details.
