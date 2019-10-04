@@ -11,6 +11,7 @@ Gem::Specification.new do |spec|
   spec.license  = 'GPL-3.0'
   spec.homepage = 'https://github.com/kotovalexarian/digest-blake2b.rb'
   spec.summary  = 'The BLAKE2b cryptographic hash function.'
+  spec.platform = Gem::Platform::RUBY
 
   spec.required_ruby_version = '~> 2.1'
 
