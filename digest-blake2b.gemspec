@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.name     = 'digest-blake2b'
   spec.version  = Digest::Blake2b::VERSION
   spec.license  = 'GPL-3.0'
-  spec.homepage = 'https://github.com/kotovalexarian/digest-blake2b.rb'
+  spec.homepage = 'https://github.com/kotovalexarian/digest-blake2b'
   spec.summary  = 'The BLAKE2b cryptographic hash function.'
   spec.platform = Gem::Platform::RUBY
 
@@ -24,10 +24,10 @@ Gem::Specification.new do |spec|
   DESCRIPTION
 
   spec.metadata = {
-    'homepage_uri'    => 'https://github.com/kotovalexarian/digest-blake2b.rb',
-    'source_code_uri' => 'https://github.com/kotovalexarian/digest-blake2b.rb',
+    'homepage_uri'    => 'https://github.com/kotovalexarian/digest-blake2b',
+    'source_code_uri' => 'https://github.com/kotovalexarian/digest-blake2b',
     'bug_tracker_uri' =>
-      'https://github.com/kotovalexarian/digest-blake2b.rb/issues',
+      'https://github.com/kotovalexarian/digest-blake2b/issues',
   }.freeze
 
   spec.bindir        = 'exe'
