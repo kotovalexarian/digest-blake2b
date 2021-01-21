@@ -12,6 +12,7 @@
    More information about the BLAKE2 hash function can be found at
    https://blake2.net.
 */
+
 #ifndef BLAKE2_CONFIG_H
 #define BLAKE2_CONFIG_H
 
@@ -20,22 +21,21 @@
 #define HAVE_SSE2
 #endif
 
-#if defined(__SSSE3__)
+#ifdef __SSSE3__
 #define HAVE_SSSE3
 #endif
 
-#if defined(__SSE4_1__)
+#ifdef __SSE4_1__
 #define HAVE_SSE41
 #endif
 
-#if defined(__AVX__)
+#ifdef __AVX__
 #define HAVE_AVX
 #endif
 
-#if defined(__XOP__)
+#ifdef __XOP__
 #define HAVE_XOP
 #endif
-
 
 #ifdef HAVE_AVX2
 #ifndef HAVE_AVX
@@ -65,7 +65,7 @@
 #define HAVE_SSE2
 #endif
 
-#if !defined(HAVE_SSE2)
+#ifndef HAVE_SSE2
 #error "This code requires at least SSE2."
 #endif
 

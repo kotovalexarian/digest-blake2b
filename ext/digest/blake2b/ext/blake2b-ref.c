@@ -26,16 +26,16 @@
 #include <intrin.h> /* for _mm_set_epi64x */
 #endif
 #include <emmintrin.h>
-#if defined(HAVE_SSSE3)
+#ifdef HAVE_SSSE3
 #include <tmmintrin.h>
 #endif
-#if defined(HAVE_SSE41)
+#ifdef HAVE_SSE41
 #include <smmintrin.h>
 #endif
-#if defined(HAVE_AVX)
+#ifdef HAVE_AVX
 #include <immintrin.h>
 #endif
-#if defined(HAVE_XOP)
+#ifdef HAVE_XOP
 #include <x86intrin.h>
 #endif
 
@@ -160,7 +160,7 @@ static void blake2b_compress( blake2b_state *S, const uint8_t block[BLAKE2B_BLOC
   const __m128i r16 = _mm_setr_epi8( 2, 3, 4, 5, 6, 7, 0, 1, 10, 11, 12, 13, 14, 15, 8, 9 );
   const __m128i r24 = _mm_setr_epi8( 3, 4, 5, 6, 7, 0, 1, 2, 11, 12, 13, 14, 15, 8, 9, 10 );
 #endif
-#if defined(HAVE_SSE41)
+#ifdef HAVE_SSE41
   const __m128i m0 = LOADU( block + 00 );
   const __m128i m1 = LOADU( block + 16 );
   const __m128i m2 = LOADU( block + 32 );
@@ -297,14 +297,14 @@ int blake2( void *out, size_t outlen, const void *in, size_t inlen, const void *
   return blake2b(out, outlen, in, inlen, key, keylen);
 }
 
-#if defined(SUPERCOP)
+#ifdef SUPERCOP
 int crypto_hash( unsigned char *out, unsigned char *in, unsigned long long inlen )
 {
   return blake2b( out, BLAKE2B_OUTBYTES, in, inlen, NULL, 0 );
 }
 #endif
 
-#if defined(BLAKE2B_SELFTEST)
+#ifdef BLAKE2B_SELFTEST
 #include <string.h>
 #include "blake2-kat.h"
 int main( void )

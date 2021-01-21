@@ -6,7 +6,7 @@ require 'rake/extensiontask'
 
 spec = Gem::Specification.load('digest-blake2b.gemspec')
 
-Rake::ExtensionTask.new('digest/blake2b_ext', spec) do |ext|
+Rake::ExtensionTask.new('digest/blake2b/ext', spec) do |ext|
   ext.source_pattern = '*.{c,h}'
 end
 

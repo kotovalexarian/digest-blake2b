@@ -12,6 +12,7 @@
    More information about the BLAKE2 hash function can be found at
    https://blake2.net.
 */
+
 #ifndef BLAKE2B_ROUND_H
 #define BLAKE2B_ROUND_H
 
@@ -80,7 +81,7 @@
   row2l = _mm_roti_epi64(row2l, -63); \
   row2h = _mm_roti_epi64(row2h, -63); \
 
-#if defined(HAVE_SSSE3)
+#ifdef HAVE_SSSE3
 #define DIAGONALIZE(row1l,row2l,row3l,row4l,row1h,row2h,row3h,row4h) \
   t0 = _mm_alignr_epi8(row2h, row2l, 8); \
   t1 = _mm_alignr_epi8(row2l, row2h, 8); \
@@ -136,7 +137,7 @@
 
 #endif
 
-#if defined(HAVE_SSE41)
+#ifdef HAVE_SSE41
 #include "blake2b-load-sse41.h"
 #else
 #include "blake2b-load-sse2.h"
