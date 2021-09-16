@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary  = 'The BLAKE2b cryptographic hash function.'
   spec.platform = Gem::Platform::RUBY
 
-  spec.required_ruby_version = '~> 2.1'
+  spec.required_ruby_version = '>= 2.1', '< 4'
 
   spec.authors = ['Alex Kotov', 'Franck Verrot', 'Mauricio Gomes']
   spec.email   = %w[mauricio@edge14.com]
