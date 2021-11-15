@@ -12,7 +12,6 @@
    More information about the BLAKE2 hash function can be found at
    https://blake2.net.
 */
-
 #ifndef BLAKE2_IMPL_H
 #define BLAKE2_IMPL_H
 
@@ -20,7 +19,7 @@
 #include <string.h>
 
 #if !defined(__cplusplus) && (!defined(__STDC_VERSION__) || __STDC_VERSION__ < 199901L)
-  #ifdef _MSC_VER
+  #if   defined(_MSC_VER)
     #define BLAKE2_INLINE __inline
   #elif defined(__GNUC__)
     #define BLAKE2_INLINE __inline__
@@ -33,7 +32,7 @@
 
 static BLAKE2_INLINE uint32_t load32( const void *src )
 {
-#ifdef NATIVE_LITTLE_ENDIAN
+#if defined(NATIVE_LITTLE_ENDIAN)
   uint32_t w;
   memcpy(&w, src, sizeof w);
   return w;
@@ -48,7 +47,7 @@ static BLAKE2_INLINE uint32_t load32( const void *src )
 
 static BLAKE2_INLINE uint64_t load64( const void *src )
 {
-#ifdef NATIVE_LITTLE_ENDIAN
+#if defined(NATIVE_LITTLE_ENDIAN)
   uint64_t w;
   memcpy(&w, src, sizeof w);
   return w;
@@ -67,7 +66,7 @@ static BLAKE2_INLINE uint64_t load64( const void *src )
 
 static BLAKE2_INLINE uint16_t load16( const void *src )
 {
-#ifdef NATIVE_LITTLE_ENDIAN
+#if defined(NATIVE_LITTLE_ENDIAN)
   uint16_t w;
   memcpy(&w, src, sizeof w);
   return w;
@@ -80,7 +79,7 @@ static BLAKE2_INLINE uint16_t load16( const void *src )
 
 static BLAKE2_INLINE void store16( void *dst, uint16_t w )
 {
-#ifdef NATIVE_LITTLE_ENDIAN
+#if defined(NATIVE_LITTLE_ENDIAN)
   memcpy(dst, &w, sizeof w);
 #else
   uint8_t *p = ( uint8_t * )dst;
@@ -91,7 +90,7 @@ static BLAKE2_INLINE void store16( void *dst, uint16_t w )
 
 static BLAKE2_INLINE void store32( void *dst, uint32_t w )
 {
-#ifdef NATIVE_LITTLE_ENDIAN
+#if defined(NATIVE_LITTLE_ENDIAN)
   memcpy(dst, &w, sizeof w);
 #else
   uint8_t *p = ( uint8_t * )dst;
@@ -104,7 +103,7 @@ static BLAKE2_INLINE void store32( void *dst, uint32_t w )
 
 static BLAKE2_INLINE void store64( void *dst, uint64_t w )
 {
-#ifdef NATIVE_LITTLE_ENDIAN
+#if defined(NATIVE_LITTLE_ENDIAN)
   memcpy(dst, &w, sizeof w);
 #else
   uint8_t *p = ( uint8_t * )dst;

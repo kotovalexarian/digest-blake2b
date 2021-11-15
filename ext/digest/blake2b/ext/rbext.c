@@ -13,8 +13,7 @@ typedef struct {
   VALUE to_bytes;
 } Blake2;
 
-VALUE mDigest;
-VALUE mDigest_cBlake2;
+VALUE cBlake2;
 
 static void blake2_free(Blake2 *blake2) {
   free(blake2->key_bytes);
@@ -100,12 +99,10 @@ VALUE m_blake2_digest(VALUE self, VALUE _input, VALUE _representation) {
   return result;
 }
 
-void Init_ext() {
-  mDigest = rb_define_module("Digest");
+void Init_blake2b_ext() {
+  cBlake2 = rb_define_class("Blake2b", rb_cObject);
+  rb_define_alloc_func(cBlake2, blake2_alloc);
 
-  mDigest_cBlake2 = rb_define_class_under(mDigest, "Blake2b", rb_cObject);
-  rb_define_alloc_func(mDigest_cBlake2, blake2_alloc);
-
-  rb_define_private_method(mDigest_cBlake2, "initialize", RUBY_METHOD_FUNC(m_blake2_initialize), 2);
-  rb_define_method(mDigest_cBlake2, "digest", RUBY_METHOD_FUNC(m_blake2_digest), 2);
+  rb_define_private_method(cBlake2, "initialize", RUBY_METHOD_FUNC(m_blake2_initialize), 2);
+  rb_define_method(cBlake2, "digest", RUBY_METHOD_FUNC(m_blake2_digest), 2);
 }
