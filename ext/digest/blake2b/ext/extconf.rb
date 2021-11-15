@@ -1,3 +1,3 @@
 require 'mkmf'
-$CFLAGS += ' -Wall -Wextra -std=c99 -pedantic -Wno-long-long'
+$CFLAGS += ' -std=c99'
 create_makefile 'digest/blake2b/ext'
