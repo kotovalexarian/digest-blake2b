@@ -4,6 +4,7 @@ lib = File.expand_path('lib', __dir__).freeze
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include? lib
 
 require 'digest/blake2b/version'
+require 'digest/blake2b/impl'
 
 Gem::Specification.new do |spec|
   spec.name     = 'digest-blake2b'
