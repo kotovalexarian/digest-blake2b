@@ -3,7 +3,7 @@ version: 2
 jobs:
   ruby_2_6:
     docker:
-      - image: ruby:2.6
+      - image: circleci/ruby:2.6-node-browsers
         environment:
           STEALTH_ENV: test
 
@@ -46,7 +46,7 @@ jobs:
           destination: test-results
   ruby_2_7:
     docker:
-      - image: ruby:2.7
+      - image: circleci/ruby:2.7-node-browsers
 
     working_directory: ~/repo
 
