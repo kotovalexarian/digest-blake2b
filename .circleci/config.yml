@@ -3,7 +3,7 @@ version: 2
 jobs:
   ruby_2_6:
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: ruby:2.6
         environment:
           STEALTH_ENV: test
 
@@ -11,13 +11,6 @@ jobs:
 
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
 
       - run:
           name: install dependencies
@@ -46,19 +39,12 @@ jobs:
           destination: test-results
   ruby_2_7:
     docker:
-      - image: circleci/ruby:2.7-node-browsers
+      - image: ruby:2.7
 
     working_directory: ~/repo
 
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
 
       - run:
           name: install dependencies
