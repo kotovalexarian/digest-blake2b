@@ -6,9 +6,9 @@ require 'rake/extensiontask'
 
 spec = Gem::Specification.load('digest-blake2b.gemspec')
 
-Rake::ExtensionTask.new('digest/blake2b/sse', spec) do |ext|
+Rake::ExtensionTask.new('digest/blake2b', spec) do |ext|
   ext.source_pattern = '*.{c,h}'
-  ext.ext_dir = 'ext/digest/blake2b/sse'
+  ext.ext_dir = "ext/digest/blake2b/#{Digest::Blake2b::IMPL}"
 end
 
 Rake::TestTask.new do |t|

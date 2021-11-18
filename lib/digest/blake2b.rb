@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'digest/blake2b/sse'
+require "digest/blake2b/#{Digest::Blake2b::IMPL}"
 
 require 'digest/blake2b/key'
 require 'digest/blake2b/version'
