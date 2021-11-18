@@ -7,7 +7,7 @@
 
 /checksums/*
 !/checksums/.keep
-/lib/*.bundle
+/lib/**/*.bundle
 /lib/digest/blake2b/ext.so
 
 *.o
