@@ -7,7 +7,7 @@ More info at: [https://blake2.net](https://blake2.net).
 
 ## Summary
 
-This gem is a C-extension to enable using BLAKE2b in Ruby. This BLAKE2b implementation (or just BLAKE2) is optimized for 64-bit platforms with SSE support (excluding NEON-enabled ARMs). It produces digests of any size between 1 and 64 bytes.
+This gem is a C-extension to enable using BLAKE2b in Ruby. This reference BLAKE2b implementation (or just BLAKE2). For 64-bit x86 platforms with SSE support optimized implementation is used. It produces digests of any size between 1 and 64 bytes.
 
 The C code for this gem is taken from the [official reference C implementation](https://github.com/BLAKE2/BLAKE2) as of commit [ca4c89314abff54e3806b44e4a08164f8204f09a](https://github.com/BLAKE2/BLAKE2/tree/ca4c89314abff54e3806b44e4a08164f8204f09a).
 
