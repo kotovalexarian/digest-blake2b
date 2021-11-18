@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  ruby_2_6:
+  ruby_2_6_x86_64:
     docker:
       - image: ruby:2.6
         environment:
@@ -37,7 +37,79 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-  ruby_2_7:
+  ruby_2_7_x86_64:
+    docker:
+      - image: ruby:2.7
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: install dependencies
+          command: |
+            gem install bundler
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+
+            bundle exec rake full
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+  ruby_2_6_arm64:
+    resource_class: arm.medium
+    docker:
+      - image: ruby:2.6
+        environment:
+          STEALTH_ENV: test
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: install dependencies
+          command: |
+            gem install bundler
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+
+            bundle exec rake full
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+  ruby_2_7_arm64:
+    resource_class: arm.medium
     docker:
       - image: ruby:2.7
 
@@ -76,5 +148,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - ruby_2_6
-      - ruby_2_7
+      - ruby_2_6_x86_64
+      - ruby_2_7_x86_64
+      - ruby_2_6_arm64
+      - ruby_2_7_arm64
