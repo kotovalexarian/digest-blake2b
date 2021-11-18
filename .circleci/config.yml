@@ -3,9 +3,7 @@ version: 2
 jobs:
   ruby_2_6_x86_64:
     machine:
-      - image: ruby:2.6
-        environment:
-          STEALTH_ENV: test
+      image: ruby:2.6
 
     working_directory: ~/repo
 
@@ -39,7 +37,7 @@ jobs:
           destination: test-results
   ruby_2_7_x86_64:
     machine:
-      - image: ruby:2.7
+      image: ruby:2.7
 
     working_directory: ~/repo
 
@@ -74,9 +72,7 @@ jobs:
   ruby_2_6_arm64:
     resource_class: arm.medium
     machine:
-      - image: ruby:2.6
-        environment:
-          STEALTH_ENV: test
+      image: ruby:2.6
 
     working_directory: ~/repo
 
@@ -111,7 +107,7 @@ jobs:
   ruby_2_7_arm64:
     resource_class: arm.medium
     machine:
-      - image: ruby:2.7
+      image: ruby:2.7
 
     working_directory: ~/repo
 
