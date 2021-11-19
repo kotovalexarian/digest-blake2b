@@ -4,7 +4,6 @@ lib = File.expand_path('lib', __dir__).freeze
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include? lib
 
 require 'digest/blake2b/version'
-require 'digest/blake2b/impl'
 
 Gem::Specification.new do |spec|
   spec.name     = 'digest-blake2b'
@@ -42,7 +41,7 @@ Gem::Specification.new do |spec|
 
   spec.executables = spec.files.grep %r{^exe/}, &File.method(:basename)
 
-  spec.extensions << "ext/digest/blake2b/#{Digest::Blake2b::IMPL}/extconf.rb"
+  spec.extensions << 'ext/digest/blake2b/ext/extconf.rb'
 
   spec.add_development_dependency 'bundler'      , '~> 2.2'
   spec.add_development_dependency 'minitest'     , '~> 5.11'

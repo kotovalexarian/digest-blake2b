@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require 'digest/blake2b/key'
 require 'digest/blake2b/version'
-require 'digest/blake2b/impl'
-
-require "digest/blake2b/#{Digest::Blake2b::IMPL}"
+require 'digest/blake2b/key'
+require 'digest/blake2b/ext'
 
 module Digest
   class Blake2b

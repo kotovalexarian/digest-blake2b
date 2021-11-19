@@ -303,14 +303,14 @@ int blake2( void *out, size_t outlen, const void *in, size_t inlen, const void *
   return blake2b(out, outlen, in, inlen, key, keylen);
 }
 
-#if defined(SUPERCOP)
+#ifdef SUPERCOP
 int crypto_hash( unsigned char *out, unsigned char *in, unsigned long long inlen )
 {
   return blake2b( out, BLAKE2B_OUTBYTES, in, inlen, NULL, 0 );
 }
 #endif
 
-#if defined(BLAKE2B_SELFTEST)
+#ifdef BLAKE2B_SELFTEST
 #include <string.h>
 #include "blake2-kat.h"
 int main( void )
