@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
 require 'mkmf'
-$CFLAGS += ' -Wall -Wextra -std=c99 -pedantic -Wno-long-long'
+
+$CFLAGS += ' -std=c99 -pedantic -Wall -Wextra -Wno-long-long'
+
 create_makefile 'digest/blake2b/sse'
