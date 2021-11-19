@@ -1,9 +1,9 @@
-version: 2
+version: 2.1
 
 jobs:
-  ruby_2_4:
+  ruby_2_6_x86_64:
     docker:
-      - image: circleci/ruby:2.4-node-browsers
+      - image: ruby:2.6
         environment:
           STEALTH_ENV: test
 
@@ -12,22 +12,11 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
       - run:
           name: install dependencies
           command: |
+            gem install bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # run tests!
       - run:
@@ -35,7 +24,7 @@ jobs:
           command: |
             mkdir /tmp/test-results
 
-            bundle exec rake test
+            bundle exec rake full
 
       # collect reports
       - store_test_results:
@@ -43,31 +32,20 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-  ruby_2_5:
+  ruby_2_7_x86_64:
     docker:
-      - image: circleci/ruby:2.5-node-browsers
+      - image: ruby:2.7
 
     working_directory: ~/repo
 
     steps:
       - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
       - run:
           name: install dependencies
           command: |
+            gem install bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # run tests!
       - run:
@@ -75,7 +53,7 @@ jobs:
           command: |
             mkdir /tmp/test-results
 
-            bundle exec rake test
+            bundle exec rake full
 
       # collect reports
       - store_test_results:
@@ -88,5 +66,5 @@ workflows:
   version: 2
   build:
     jobs:
-      - ruby_2_4
-      - ruby_2_5
+      - ruby_2_6_x86_64
+      - ruby_2_7_x86_64

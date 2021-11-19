@@ -100,8 +100,8 @@ VALUE m_blake2_digest(VALUE self, VALUE _input, VALUE _representation) {
   return result;
 }
 
-void Init_ext() {
-  mDigest = rb_define_module("Digest");
+void Init_ref() {
+    mDigest = rb_define_module("Digest");
 
   mDigest_cBlake2 = rb_define_class_under(mDigest, "Blake2b", rb_cObject);
   rb_define_alloc_func(mDigest_cBlake2, blake2_alloc);
