@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class KeyTest < MiniTest::Test
+class KeyTest < Minitest::Test
   def test_none
     key = Digest::Blake2b::Key.none
     assert_equal [], key.bytes

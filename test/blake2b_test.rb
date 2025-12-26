@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Blake2bTest < MiniTest::Test
+class Blake2bTest < Minitest::Test
   def setup
     out_len = 64
     key     = Digest::Blake2b::Key.from_string('foo bar baz')

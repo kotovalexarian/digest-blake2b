@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'bundler/gem_tasks'
-require 'rake/testtask'
+require 'minitest/test_task'
 require 'rake/extensiontask'
 
 spec = Gem::Specification.load('digest-blake2b.gemspec')
@@ -10,12 +10,7 @@ Rake::ExtensionTask.new 'digest/blake2b/ext', spec do |ext|
   ext.source_pattern = '*.{c,h}'
 end
 
-Rake::TestTask.new do |t|
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
-  t.warning = true
-end
+Minitest::TestTask.create
 
 task default: :full
 

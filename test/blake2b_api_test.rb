@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Blake2bTest < MiniTest::Test
+class Blake2bTest < Minitest::Test
   def test_hex_with_input_only
     res = Digest::Blake2b.hex('abc')
     assert_kind_of String, res

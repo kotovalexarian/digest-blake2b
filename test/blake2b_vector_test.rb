@@ -4,7 +4,7 @@ require 'test_helper'
 # These test vectors are taken from blake2b Go package
 # https://github.com/dchest/blake2b/blob/master/blake2b_test.go
 #
-class Blake2bVectorTest < MiniTest::Test
+class Blake2bVectorTest < Minitest::Test
   def setup
     @golden = [
       "786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce",
